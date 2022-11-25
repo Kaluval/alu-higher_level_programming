@@ -1,11 +1,9 @@
 #!/usr/bin/python3
-"""Check status"""
+'''sends a request and displays the value of a variable'''
 import requests
 import sys
 
-
 if __name__ == "__main__":
     url = sys.argv[1]
-    r = requests.get(url)
-    print(r.headers.get('x-request-id'))
-
+    response = requests.get(url)
+    print(response.headers.get("X-Request-Id"))
