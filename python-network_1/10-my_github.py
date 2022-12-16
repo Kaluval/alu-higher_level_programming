@@ -5,9 +5,9 @@
     use 'GitHub API to display 'id'
 """
 import sys
+
 import requests
 from requests.auth import HTTPBasicAuth
-
 
 if __name__ == "__main__":
     auth = HTTPBasicAuth(sys.argv[1], sys.argv[2])
