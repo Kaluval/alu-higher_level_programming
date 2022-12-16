@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-All states via SQLAlchemy
+101-relationship_states_cities_list.py
 """
 from sys import argv
 from relationship_state import Base, State
@@ -15,11 +15,13 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
 
     session = Session(engine)
-    new_state = State(name='California')
 
-    new_city = City(name='San Francisco')
-    new_state.cities.append(new_city)
+    data = session.query(State).order_by(State.id).all()
 
-    session.add(new_state)
+    for row in data:
+        print("{}: {}".format(row.id, row.name))
+        for city in row.cities:
+            print("    {}: {}".format(city.id, city.name))
+
     session.commit()
     session.close()
